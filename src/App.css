@@ -1,0 +1,5 @@
+/* Core App container styles */
+main {
+  position: relative;
+  z-index: 1;
+}
