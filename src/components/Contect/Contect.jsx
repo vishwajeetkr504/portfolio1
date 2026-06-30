@@ -19,11 +19,32 @@ function Contect() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus('sending');
-    // Simulate API request
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    }, 1500);
+
+    fetch("https://formsubmit.co/ajax/vickey333kr@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        _subject: `New Portfolio Message from ${formData.name}`
+      })
+    })
+      .then(response => {
+        if (response.ok) {
+          setStatus('success');
+          setFormData({ name: '', email: '', message: '' });
+        } else {
+          setStatus('error');
+        }
+      })
+      .catch(error => {
+        console.error("Error sending message:", error);
+        setStatus('error');
+      });
   };
 
   return (
@@ -166,6 +187,12 @@ function Contect() {
               {status === 'success' && (
                 <p className="form-status success">
                   Thank you! Your message has been sent successfully. I will get back to you soon.
+                </p>
+              )}
+
+              {status === 'error' && (
+                <p className="form-status error">
+                  Oops! Something went wrong. Please try again or email me directly at vickey333kr@gmail.com.
                 </p>
               )}
             </form>

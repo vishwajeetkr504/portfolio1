@@ -9,7 +9,7 @@ function Project() {
       description: "Built this MERN application to handle user charity donations. Implemented JWT session-based token auth and coded custom backend aggregation endpoints to stream metrics to the dashboard.",
       tags: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "REST APIs"],
       githubUrl: "https://github.com/vishwajeetkr504/online-donation-platform.git",
-      liveUrl: "https://github.com/vishwajeetkr504/online-donation-platform.git",
+      liveUrl: "https://online-donation-platform-djtr.onrender.com",
       category: "Full Stack"
     },
     {
@@ -17,7 +17,7 @@ function Project() {
       description: "Applied K-Means and DBSCAN models in Python to discover daily transit user routines based on smart card scan logs. Paired the findings with an interactive web dashboard.",
       tags: ["Python", "Scikit-Learn", "React.js", "Pandas", "Matplotlib"],
       githubUrl: "https://github.com/vishwajeetkr504/smart-card-clustering",
-      liveUrl: "https://github.com/vishwajeetkr504/smart-card-clustering",
+      liveUrl: "https://smart-card-clustering.onrender.com",
       category: "Machine Learning"
     },
     {

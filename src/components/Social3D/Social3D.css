@@ -119,8 +119,8 @@
 /* 3D AVATAR SYSTEM */
 .avatar-container {
   position: relative;
-  width: 130px;
-  height: 130px;
+  width: 160px;
+  height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,8 +130,8 @@
 }
 
 .avatar-box {
-  width: 86px;
-  height: 86px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(99, 102, 241, 0.15) 100%);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -147,8 +147,8 @@
 }
 
 .avatar-face {
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--bg-tertiary) 0%, #1e2238 100%);
   display: flex;
@@ -218,15 +218,15 @@
 }
 
 .orbit-1 {
-  width: 110px;
-  height: 110px;
+  width: 136px;
+  height: 136px;
   border: 1.5px dashed rgba(16, 185, 129, 0.3);
   animation: orbit-rotate-clockwise 25s infinite linear;
 }
 
 .orbit-2 {
-  width: 126px;
-  height: 126px;
+  width: 154px;
+  height: 154px;
   border: 1px dotted rgba(99, 102, 241, 0.4);
   animation: orbit-rotate-counter 18s infinite linear;
 }
@@ -458,29 +458,29 @@
   }
   
   .avatar-container {
-    width: 110px;
-    height: 110px;
+    width: 130px;
+    height: 130px;
     margin-bottom: 20px;
   }
   
   .avatar-box {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .avatar-face {
     width: 76px;
     height: 76px;
   }
   
-  .avatar-face {
-    width: 62px;
-    height: 62px;
-  }
-  
   .orbit-1 {
-    width: 96px;
-    height: 96px;
+    width: 112px;
+    height: 112px;
   }
   
   .orbit-2 {
-    width: 110px;
-    height: 110px;
+    width: 126px;
+    height: 126px;
   }
   
   .social-layered-dock {

@@ -10,6 +10,7 @@ function Social3D() {
   const [glowStyle, setGlowStyle] = useState({ opacity: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [avatar, setAvatar] = useState(null);
+  const [isEditable, setIsEditable] = useState(false);
 
   // Load avatar from localStorage on component mount
   useEffect(() => {
@@ -19,6 +20,11 @@ function Social3D() {
     } else {
       setAvatar(profileImg);
     }
+
+    const params = new URLSearchParams(window.location.search);
+    const hasEditParam = params.get("edit") === "true";
+    const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+    setIsEditable(isLocal || hasEditParam);
   }, []);
 
   const handleMouseMove = (e) => {
@@ -115,7 +121,11 @@ function Social3D() {
           <div className="avatar-container">
             <div className="avatar-orbit orbit-1"></div>
             <div className="avatar-orbit orbit-2"></div>
-            <div className="avatar-box" onClick={triggerFileInput}>
+            <div 
+              className="avatar-box" 
+              onClick={isEditable ? triggerFileInput : undefined}
+              style={{ cursor: isEditable ? "pointer" : "default" }}
+            >
               <div className="avatar-face" style={{ overflow: "hidden", position: "relative" }}>
                 <img 
                   src={avatar || profileImg} 
@@ -127,26 +137,28 @@ function Social3D() {
                     borderRadius: "50%"
                   }}
                 />
-                <div className="avatar-overlay">
-                  <div className="avatar-action-btn" title="Change Photo">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 20h9"></path>
-                      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                    </svg>
-                  </div>
-                  {avatar && avatar !== profileImg && (
-                    <div 
-                      className="avatar-action-btn remove-btn" 
-                      title="Remove Photo"
-                      onClick={handleRemoveAvatar}
-                    >
+                {isEditable && (
+                  <div className="avatar-overlay">
+                    <div className="avatar-action-btn" title="Change Photo">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
                       </svg>
                     </div>
-                  )}
-                </div>
+                    {avatar && avatar !== profileImg && (
+                      <div 
+                        className="avatar-action-btn remove-btn" 
+                        title="Remove Photo"
+                        onClick={handleRemoveAvatar}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
             <input 
